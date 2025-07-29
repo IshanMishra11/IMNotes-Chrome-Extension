@@ -1,0 +1,250 @@
+/* --- General Setup & Body --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  margin: 0;
+  padding: 1rem;
+  width: 350px;
+  color: #333;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  
+  /* Animated gradient background for a dynamic feel */
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Glassmorphism Container --- */
+.container {
+  padding: 1.5rem;
+  position: relative;
+  
+  /* The Glass Effect */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* For Safari */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+  /* Entry Animation */
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Typography --- */
+h1 {
+  font-size: 1.5rem;
+  margin: 0 0 1rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+h2 {
+  font-size: 1.1rem;
+  margin: 1.5rem 0 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 0.5rem;
+  color: #fff;
+}
+
+/* --- Form Elements --- */
+textarea {
+  width: 100%;
+  height: 90px;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.2);
+  color: #111;
+  font-size: 1rem;
+  resize: none;
+  transition: background 0.3s, border 0.3s, box-shadow 0.3s;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+button#saveBtn {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(45deg, #ff4757, #ff6348);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button#saveBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+button#saveBtn:active {
+  transform: translateY(0);
+}
+
+/* --- Saved Message --- */
+#message {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #2ed573;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  height: 0;
+}
+
+#message.visible {
+  opacity: 1;
+  height: auto;
+}
+
+/* --- Notes List --- */
+ul#noteList {
+  list-style-type: none;
+  padding: 0;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+ul#noteList li {
+  background: rgba(255, 255, 255, 0.25);
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  transition: background 0.3s, transform 0.2s;
+  animation: popIn 0.4s ease-out backwards;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+ul#noteList li:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.02);
+}
+
+/* --- Dark Mode Toggle --- */
+.toggle-container {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #f0f0f0;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.3);
+  transition: .4s;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px; width: 14px;
+  left: 3px; bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* --- Dark Mode Theme --- */
+body.dark {
+  background: linear-gradient(-45deg, #1d2b64, #f8cdda);
+  background-size: 400% 400%;
+}
+
+body.dark .container {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark h1, body.dark h2 {
+  color: #f0f0f0;
+}
+
+body.dark h2 {
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark textarea {
+  background: rgba(0, 0, 0, 0.3);
+  color: #f0f0f0;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark textarea:focus {
+  border-color: #2196F3;
+  box-shadow: 0 0 15px rgba(33, 150, 243, 0.3);
+}
+
+body.dark ul#noteList li {
+  background: rgba(0, 0, 0, 0.3);
+  color: #f0f0f0;
+}
+
+body.dark ul#noteList li:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+.delete-btn {
+  margin-left: 10px;
+  color: #ff4d4d;
+  cursor: pointer;
+  font-weight: bold;
+  float: right;
+  transition: transform 0.2s ease;
+}
+
+.delete-btn:hover {
+  transform: scale(1.2);
+}

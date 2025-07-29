@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Note Taker</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>📝 Quick Notes</h1>
+
+    <textarea id="noteInput" placeholder="Type your note here..."></textarea>
+    <button id="saveBtn">Save Note</button>
+    <div id="message" class="hidden">Note saved ✅</div>
+
+    <h2>History</h2>
+    <ul id="noteList"></ul>
+
+    <div class="toggle-container">
+      <label class="switch">
+        <input type="checkbox" id="darkModeToggle" />
+        <span class="slider round"></span>
+      </label>
+      <span>Dark Mode</span>
+    </div>
+  </div>
+  <div class="background-animation"></div>
+  <script src="popup.js"></script>
+</body>
+</html>
